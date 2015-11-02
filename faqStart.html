@@ -5,18 +5,30 @@
     <title>FAQ</title>
     <style type="text/css">
         body {
+            background: rgb(78,229,255);
             position: relative;
+            padding: 20%
+            }
+        header {
+            font-size: 50px;
+            font-family: Ariel, Helvetica, sans-serif;
+            text-align: center;
+            
         }
-        * {
-            border: 1px solid red;
-        }
-        h1{color: rgb(159, 13, 153);}
+        
+        h1{
+            color: firebrick;}
+            
         h2 {
             padding: 0 0 0 60px;
             cursor: pointer;
             height: 50px;
             color: rgb(26, 237, 237);
         }
+        .answer{
+            color: white;
+        }
+        
         .close {
             background: url('assets/close.png') no-repeat;
         }
@@ -24,22 +36,49 @@
             background: url('assets/open.png') no-repeat;
         }
         section {
-            margin: 10px;
-            padding: 10px;
-            background-color: #999;
+            margin: 20px;
+            padding: 20px;
+            background-color: firebrick;
+            
         }
     </style>
     <script type="text/javascript" src="jquery-1.11.1.js"></script>
     <script type="text/javascript">
         ////could use toggle which is show/hide but that would not allow for the graphics
-        $(document).ready(function () {
-          
-        }); // end of ready()
+        $(document).ready(function() {
+     //hides answers   
+            $(".answer").hide();
+    //makes clicking a function
+            $(".main h2").click(function(){
+            
+            var $currentAnswer = $(this).next(".answer");
+            
+            if ($currentAnswer.is(":hidden")){
+              
+                $(".answer").slideUp();
+                $(this).removeClass("open");
+                $(this).addClass("close");
+               
+                $currentAnswer.slideDown();
+                $(this).removeclass("open");
+                $(this).addClass("close");
+            }else {
+                $currentAnswer.slideUp();
+                $(this).removeClass("close");
+                $(this).addClass("open");
+            }
+        });
+        });
+        
+        
+        
+     // end of ready()
     </script>
 </head>
 
 <body>
-    <h1>FAQ</h1>
+    <header><h1>FAQ</h1></header>
+
     <div class="main">
         <section>
             <h2 class="open">First question.</h2>
